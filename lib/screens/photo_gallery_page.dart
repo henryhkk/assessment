@@ -12,6 +12,7 @@ class PhotoGalleryPage extends StatefulWidget {
 }
 
 class _PhotoGalleryPageState extends State<PhotoGalleryPage> {
+  final int _pageSize = 36;
   int currentPage = 0;
 
   List<AssetPathEntity> photoAlbums = [];
@@ -29,11 +30,11 @@ class _PhotoGalleryPageState extends State<PhotoGalleryPage> {
 
   Future<void> _loadPhotoFromAlbum() async {
     List<AssetEntity> mediaList =
-        await photoAlbums.first.getAssetListPaged(currentPage, 18);
+        await photoAlbums.first.getAssetListPaged(currentPage, _pageSize);
     setState(() {
       imageList.addAll(mediaList);
       currentPage++;
-      loadMore = !(mediaList.length < 18);
+      loadMore = !(mediaList.length < _pageSize);
     });
   }
 
