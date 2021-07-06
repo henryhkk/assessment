@@ -89,7 +89,6 @@ class _HomePageState extends State<HomePage> {
       Permission.camera,
       Permission.location,
       Permission.storage,
-      Permission.accessMediaLocation,
     ].request();
     return statuses.values.every((permission) => permission.isGranted);
   }
